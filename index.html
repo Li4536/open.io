@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>加气站计量工资计算系统</title>
-    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css"   rel="stylesheet">
-    <link href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css"   rel="stylesheet">
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css"  rel="stylesheet">
+    <link href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css"  rel="stylesheet">
     <style>
         :root {
             --primary: #3b82f6;
@@ -19,10 +19,11 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
             color: #334155;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
@@ -34,9 +35,14 @@
         .card {
             background-color: white;
             border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             padding: 1.5rem;
             margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
         }
         
         .card-header {
@@ -52,6 +58,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             color: #1e293b;
+            letter-spacing: -0.01em;
         }
         
         .btn {
@@ -63,6 +70,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
+            letter-spacing: 0.01em;
         }
         
         .btn-primary {
@@ -74,6 +82,7 @@
         .btn-primary:hover {
             background-color: #2563eb;
             border-color: #2563eb;
+            transform: translateY(-1px);
         }
         
         .btn-secondary {
@@ -85,6 +94,7 @@
         .btn-secondary:hover {
             background-color: #475569;
             border-color: #475569;
+            transform: translateY(-1px);
         }
         
         .btn-success {
@@ -96,11 +106,13 @@
         .btn-success:hover {
             background-color: #059669;
             border-color: #059669;
+            transform: translateY(-1px);
         }
         
         .table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 0.9375rem;
         }
         
         .table th, .table td {
@@ -112,6 +124,10 @@
         .table th {
             font-weight: 600;
             background-color: #f8fafc;
+            color: #64748b;
+            text-transform: uppercase;
+            font-size: 0.8125rem;
+            letter-spacing: 0.05em;
         }
         
         .table tr:hover td {
@@ -125,18 +141,20 @@
             border: 1px solid #e2e8f0;
             border-radius: 0.375rem;
             transition: border-color 0.2s;
+            font-size: 0.9375rem;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
         .alert {
             padding: 1rem;
             border-radius: 0.375rem;
             margin-bottom: 1rem;
+            font-size: 0.9375rem;
         }
         
         .alert-success {
@@ -218,6 +236,11 @@
             border-radius: 0.5rem;
             padding: 1rem;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-2px);
         }
         
         .stats-title {
@@ -251,19 +274,75 @@
                 grid-template-columns: repeat(1, minmax(0, 1fr));
             }
         }
+        
+        /* 极简主义增强 */
+        .minimal-divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 1.5rem 0;
+        }
+        
+        .minimal-header {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        .delayed-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delayed-2 {
+            animation-delay: 0.2s;
+        }
+        
+        /* 表格优化 */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* 按钮微交互 */
+        .btn-micro {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-micro:active {
+            transform: translateY(1px);
+        }
+        
+        /* 输入框微交互 */
+        .input-micro {
+            transition: all 0.2s;
+        }
+        
+        .input-micro:hover {
+            border-color: #cbd5e1;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div class="card fade-in">
             <div class="card-header">
                 <h1 class="card-title">加气站计量工资计算系统</h1>
                 <div>
-                    <button id="downloadTemplate" class="btn btn-secondary mr-2">
-                        <i class="fas fa-file-excel mr-2"></i>下载导入模板 
+                    <button id="downloadTemplate" class="btn btn-secondary mr-2 btn-micro">
+                        <i class="fas fa-file-excel mr-2"></i>下载模板 
                     </button>
-                    <button id="importData" class="btn btn-primary">
-                        <i class="fas fa-file-import mr-2"></i>批量导入数据 
+                    <button id="importData" class="btn btn-primary btn-micro">
+                        <i class="fas fa-file-import mr-2"></i>导入数据 
                     </button>
                     <input type="file" id="fileInput" class="hidden" accept=".xlsx,.xls,.csv">
                 </div>
@@ -281,28 +360,28 @@
             </div>
             
             <div class="grid grid-cols-3 md:grid-cols-3 gap-4 mb-6">
-                <div class="card">
-                    <h2 class="card-title">工资池设置</h2>
+                <div class="card fade-in delayed-1">
+                    <h2 class="minimal-header">工资池设置</h2>
                     <div class="mb-3">
                         <label for="totalPool" class="block mb-1 font-medium">总计量工资池 (元)</label>
-                        <input type="number" id="totalPool" class="form-control" value="18975">
+                        <input type="number" id="totalPool" class="form-control input-micro" value="18975">
                     </div>
                     <div class="mb-3">
                         <label for="gasPool" class="block mb-1 font-medium">加气计量池 (元)</label>
-                        <input type="number" id="gasPool" class="form-control" value="12175">
+                        <input type="number" id="gasPool" class="form-control input-micro" value="12175">
                     </div>
                     <div class="mb-3">
                         <label for="unloadPool" class="block mb-1 font-medium">卸车计量池 (元)</label>
-                        <input type="number" id="unloadPool" class="form-control" value="3200">
+                        <input type="number" id="unloadPool" class="form-control input-micro" value="3200">
                     </div>
                     <div class="mb-3">
                         <label for="managerPool" class="block mb-1 font-medium">站长计量池 (元)</label>
-                        <input type="number" id="managerPool" class="form-control" value="3600">
+                        <input type="number" id="managerPool" class="form-control input-micro" value="3600">
                     </div>
                 </div>
                 
-                <div class="card">
-                    <h2 class="card-title">站点销量统计</h2>
+                <div class="card fade-in delayed-1">
+                    <h2 class="minimal-header">站点销量统计</h2>
                     <div class="stats-card">
                         <div class="stats-title">达来呼布站</div>
                         <p>加液量</p><div class="stats-value" id="dalaihubuTotal">0 公斤</div>
@@ -320,18 +399,18 @@
                     </div>
                 </div>
                 
-                <div class="card">
-                    <h2 class="card-title">员工管理</h2>
+                <div class="card fade-in delayed-1">
+                    <h2 class="minimal-header">员工管理</h2>
                     <div class="mb-3">
                         <label for="employeeType" class="block mb-1 font-medium">员工类型</label>
-                        <select id="employeeType" class="form-control">
+                        <select id="employeeType" class="form-control input-micro">
                             <option value="gas">加气员</option>
                             <option value="manager">站长</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="employeeStation" class="block mb-1 font-medium">所属站点</label>
-                        <select id="employeeStation" class="form-control">
+                        <select id="employeeStation" class="form-control input-micro">
                             <option value="1">达来呼布</option>
                             <option value="2">乌力吉</option>
                             <option value="3">纳林湖</option>
@@ -339,19 +418,23 @@
                     </div>
                     <div class="mb-3">
                         <label for="employeeName" class="block mb-1 font-medium">员工姓名</label>
-                        <input type="text" id="employeeName" class="form-control" placeholder="请输入员工姓名">
+                        <input type="text" id="employeeName" class="form-control input-micro" placeholder="请输入员工姓名">
                     </div>
                     <div class="mb-3">
                         <label for="employeeGasAmount" class="block mb-1 font-medium">加气量 (公斤)</label>
-                        <input type="number" id="employeeGasAmount" class="form-control" value="0">
+                        <input type="number" id="employeeGasAmount" class="form-control input-micro" value="0">
                     </div>
                     <div class="mb-3">
                         <label for="employeeUnloadAmount" class="block mb-1 font-medium">卸车量 (车)</label>
-                        <input type="number" id="employeeUnloadAmount" class="form-control" value="0">
+                        <input type="number" id="employeeUnloadAmount" class="form-control input-micro" value="0">
+                    </div>
+                    <div class="mb-3 hidden" id="ratingContainer">
+                        <label for="employeeRating" class="block mb-1 font-medium">考核评分(百分制)</label>
+                        <input type="number" id="employeeRating" class="form-control input-micro" min="0" max="100" value="100">
                     </div>
                     <div class="mb-3 hidden" id="violationContainer">
                         <label for="employeeViolations" class="block mb-1 font-medium">违规次数</label>
-                        <select id="employeeViolations" class="form-control">
+                        <select id="employeeViolations" class="form-control input-micro">
                             <option value="0">0次 (考核系数: 1.0)</option>
                             <option value="1">1次 (考核系数: 0.95)</option>
                             <option value="2">2次 (考核系数: 0.85)</option>
@@ -359,26 +442,26 @@
                             <option value="4">4次 (考核系数: 0.0)</option>
                         </select>
                     </div>
-                    <button id="addEmployee" class="btn btn-primary w-full">
+                    <button id="addEmployee" class="btn btn-primary w-full btn-micro">
                         <i class="fas fa-plus mr-2"></i>添加员工 
                     </button>
                 </div>
             </div>
             
-            <div class="card">
+            <div class="card fade-in delayed-2">
                 <div class="card-header">
-                    <h2 class="card-title">员工列表</h2>
+                    <h2 class="minimal-header">员工列表</h2>
                     <div>
-                        <button id="calculate" class="btn btn-success mr-2">
+                        <button id="calculate" class="btn btn-success mr-2 btn-micro">
                             <i class="fas fa-calculator mr-2"></i>计算工资 
                         </button>
-                        <button id="downloadResults" class="btn btn-secondary">
+                        <button id="downloadResults" class="btn btn-secondary btn-micro">
                             <i class="fas fa-file-export mr-2"></i>下载工资表 
                         </button>
                     </div>
                 </div>
                 
-                <div class="overflow-x-auto">
+                <div class="table-container">
                     <table class="table" id="employeeTable">
                         <thead>
                             <tr>
@@ -389,6 +472,7 @@
                                 <th>加气量(公斤)</th>
                                 <th>卸车量(车)</th>
                                 <th>违规次数</th>
+                                <th>考核评分</th>
                                 <th>考核系数</th>
                                 <th>工资(元)</th>
                                 <th>操作</th>
@@ -400,17 +484,17 @@
                     </table>
                 </div>
                 
-                <div class="mt-4 pt-4 border-t border-gray-200">
-                    <div class="flex justify-between items-center">
-                        <div class="font-medium">总发放工资: <span id="totalSalary">0</span> 元</div>
-                        <div class="font-medium">工资池余额: <span id="remainingPool">18975</span> 元</div>
-                    </div>
+                <div class="minimal-divider"></div>
+                
+                <div class="flex justify-between items-center">
+                    <div class="font-medium">总发放工资: <span id="totalSalary">0</span> 元</div>
+                    <div class="font-medium">工资池余额: <span id="remainingPool">18975</span> 元</div>
                 </div>
             </div>
         </div>
     </div>
  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>   
     <script>
         // 员工数据存储 
         let employees = [];
@@ -418,96 +502,118 @@
         let remainingPool = 18975;
         
         // DOM元素 
-        const employeeType = document.getElementById('employeeType');  
-        const employeeStation = document.getElementById('employeeStation');  
-        const employeeName = document.getElementById('employeeName');  
-        const employeeGasAmount = document.getElementById('employeeGasAmount');  
-        const employeeUnloadAmount = document.getElementById('employeeUnloadAmount');  
-        const employeeViolations = document.getElementById('employeeViolations');  
-        const violationContainer = document.getElementById('violationContainer');  
-        const addEmployeeBtn = document.getElementById('addEmployee');  
-        const employeeList = document.getElementById('employeeList');  
-        const calculateBtn = document.getElementById('calculate');  
-        const downloadResultsBtn = document.getElementById('downloadResults');  
-        const downloadTemplateBtn = document.getElementById('downloadTemplate');  
-        const importDataBtn = document.getElementById('importData');  
-        const fileInput = document.getElementById('fileInput');  
-        const totalSalaryDisplay = document.getElementById('totalSalary');  
-        const remainingPoolDisplay = document.getElementById('remainingPool');  
-        const successAlert = document.getElementById('successAlert');  
-        const successMessage = document.getElementById('successMessage');  
-        const errorAlert = document.getElementById('errorAlert');  
-        const errorMessage = document.getElementById('errorMessage');  
+        const employeeType = document.getElementById('employeeType');   
+        const employeeStation = document.getElementById('employeeStation');   
+        const employeeName = document.getElementById('employeeName');   
+        const employeeGasAmount = document.getElementById('employeeGasAmount');   
+        const employeeUnloadAmount = document.getElementById('employeeUnloadAmount');   
+        const employeeViolations = document.getElementById('employeeViolations');   
+        const violationContainer = document.getElementById('violationContainer');   
+        const ratingContainer = document.getElementById('ratingContainer'); 
+        const addEmployeeBtn = document.getElementById('addEmployee');   
+        const employeeList = document.getElementById('employeeList');   
+        const calculateBtn = document.getElementById('calculate');   
+        const downloadResultsBtn = document.getElementById('downloadResults');   
+        const downloadTemplateBtn = document.getElementById('downloadTemplate');   
+        const importDataBtn = document.getElementById('importData');   
+        const fileInput = document.getElementById('fileInput');   
+        const totalSalaryDisplay = document.getElementById('totalSalary');   
+        const remainingPoolDisplay = document.getElementById('remainingPool');   
+        const successAlert = document.getElementById('successAlert');   
+        const successMessage = document.getElementById('successMessage');   
+        const errorAlert = document.getElementById('errorAlert');   
+        const errorMessage = document.getElementById('errorMessage');   
         
         // 站点销量统计DOM 
-        const dalaihubuTotal = document.getElementById('dalaihubuTotal'); 
-        const dalaihubuUnload = document.getElementById('dalaihubuUnload'); 
-        const wulijiTotal = document.getElementById('wulijiTotal'); 
-        const wulijiUnload = document.getElementById('wulijiUnload'); 
-        const nalinhuTotal = document.getElementById('nalinhuTotal'); 
-        const nalinhuUnload = document.getElementById('nalinhuUnload'); 
+        const dalaihubuTotal = document.getElementById('dalaihubuTotal');  
+        const dalaihubuUnload = document.getElementById('dalaihubuUnload');  
+        const wulijiTotal = document.getElementById('wulijiTotal');  
+        const wulijiUnload = document.getElementById('wulijiUnload');  
+        const nalinhuTotal = document.getElementById('nalinhuTotal');  
+        const nalinhuUnload = document.getElementById('nalinhuUnload');  
         
         // 初始化 
-        document.addEventListener('DOMContentLoaded',   function() {
+        document.addEventListener('DOMContentLoaded',  function() {
             // 绑定事件 
-            employeeType.addEventListener('change',   toggleViolationField);
-            addEmployeeBtn.addEventListener('click',   addEmployee);
-            calculateBtn.addEventListener('click',   calculateSalaries);
-            downloadResultsBtn.addEventListener('click',   downloadResults);
-            downloadTemplateBtn.addEventListener('click',   downloadTemplate);
-            importDataBtn.addEventListener('click',   () => fileInput.click());  
-            fileInput.addEventListener('change',   importData);
+            employeeType.addEventListener('change',  toggleViolationField);
+            addEmployeeBtn.addEventListener('click',  addEmployee);
+            calculateBtn.addEventListener('click',  calculateSalaries);
+            downloadResultsBtn.addEventListener('click',  downloadResults);
+            downloadTemplateBtn.addEventListener('click',  downloadTemplate);
+            importDataBtn.addEventListener('click',  () => fileInput.click());   
+            fileInput.addEventListener('change',  importData);
             
             // 初始化显示 
             toggleViolationField();
             updatePoolDisplay();
             updateStats();
+            
+            // 添加淡入动画 
+            document.querySelectorAll('.fade-in').forEach(el  => {
+                el.style.opacity  = '0';
+            });
+            
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el  => {
+                    el.style.opacity  = '1';
+                });
+            }, 100);
         });
         
         // 切换违规次数字段显示 
         function toggleViolationField() {
-            if (employeeType.value   === 'gas') {
-                violationContainer.classList.remove('hidden');  
+            if (employeeType.value  === 'gas') {
+                violationContainer.classList.remove('hidden'); 
+                ratingContainer.classList.add('hidden');   
             } else {
                 violationContainer.classList.add('hidden');  
+                ratingContainer.classList.remove('hidden');   
             }
         }
         
         // 添加员工 
         function addEmployee() {
-            const name = employeeName.value.trim();  
-            const type = employeeType.value;  
-            const station = parseInt(employeeStation.value);  
-            const gasAmount = parseFloat(employeeGasAmount.value)   || 0;
-            const unloadAmount = parseFloat(employeeUnloadAmount.value)   || 0;
-            const violations = type === 'gas' ? parseInt(employeeViolations.value)   : 0;
+            const name = employeeName.value.trim();   
+            const type = employeeType.value;   
+            const station = parseInt(employeeStation.value);   
+            const gasAmount = parseFloat(employeeGasAmount.value)  || 0;
+            const unloadAmount = parseFloat(employeeUnloadAmount.value)  || 0;
+            const violations = type === 'gas' ? parseInt(employeeViolations.value)  : 0;
+            const rating = type === 'manager' ? parseInt(employeeRating.value)  : 100; // 站经理的考核评分 
             
             if (!name) {
                 showError('请输入员工姓名');
                 return;
             }
             
+            if (type === 'manager' && (rating < 0 || rating > 100)) {
+                showError('考核评分必须在0-100之间');
+                return;
+            }
+            
             const employee = {
-                id: Date.now(),  
+                id: Date.now(),   
                 name,
                 type,
                 station,
                 gasAmount,
                 unloadAmount,
                 violations,
-                coefficient: calculateCoefficient(violations),
+                rating,
+                coefficient: type === 'gas' ? calculateCoefficient(violations) : rating / 100,
                 salary: 0 
             };
             
-            employees.push(employee);  
+            employees.push(employee);   
             renderEmployeeList();
             updateStats();
             
             // 重置表单 
-            employeeName.value   = '';
-            employeeGasAmount.value   = '0';
-            employeeUnloadAmount.value   = '0';
-            employeeViolations.value   = '0';
+            employeeName.value  = '';
+            employeeGasAmount.value  = '0';
+            employeeUnloadAmount.value  = '0';
+            employeeViolations.value  = '0';
+            employeeRating.value  = '100';
             
             showSuccess('员工添加成功');
         }
@@ -524,8 +630,8 @@
             // 计算各站点总量 
             employees.forEach(emp  => {
                 if (emp.type  === 'gas') {
-                    stats[emp.station].gasTotal += emp.gasAmount; 
-                    stats[emp.station].unloadTotal += emp.unloadAmount; 
+                    stats[emp.station].gasTotal += emp.gasAmount;  
+                    stats[emp.station].unloadTotal += emp.unloadAmount;  
                 }
             });
             
@@ -552,21 +658,21 @@
         
         // 计算工资 
         function calculateSalaries() {
-            const gasPool = parseFloat(document.getElementById('gasPool').value)   || 0;
-            const unloadPool = parseFloat(document.getElementById('unloadPool').value)   || 0;
-            const managerPool = parseFloat(document.getElementById('managerPool').value)   || 0;
+            const gasPool = parseFloat(document.getElementById('gasPool').value)  || 0;
+            const unloadPool = parseFloat(document.getElementById('unloadPool').value)  || 0;
+            const managerPool = parseFloat(document.getElementById('managerPool').value)  || 0;
             
             // 计算加气员和卸车员的工资 
-            const gasEmployees = employees.filter(e   => e.type   === 'gas');
-            const managerEmployees = employees.filter(e   => e.type   === 'manager');
+            const gasEmployees = employees.filter(e  => e.type  === 'gas');
+            const managerEmployees = employees.filter(e  => e.type  === 'manager');
             
             // 计算总加气量和总卸车量（考虑考核系数）
             let totalEffectiveGas = 0;
             let totalEffectiveUnload = 0;
             
-            gasEmployees.forEach(emp   => {
-                totalEffectiveGas += emp.gasAmount   * emp.coefficient; 
-                totalEffectiveUnload += emp.unloadAmount   * emp.coefficient; 
+            gasEmployees.forEach(emp  => {
+                totalEffectiveGas += emp.gasAmount  * emp.coefficient;  
+                totalEffectiveUnload += emp.unloadAmount  * emp.coefficient;  
             });
             
             // 计算单位加气量和卸车量的工资 
@@ -575,17 +681,18 @@
             
             // 计算每个员工的工资 
             totalSalary = 0;
-            employees.forEach(emp   => {
-                if (emp.type   === 'gas') {
-                    const gasSalary = emp.gasAmount   * emp.coefficient  * gasUnitValue;
-                    const unloadSalary = emp.unloadAmount   * emp.coefficient  * unloadUnitValue;
-                    emp.salary   = gasSalary + unloadSalary;
-                } else if (emp.type   === 'manager') {
+            employees.forEach(emp  => {
+                if (emp.type  === 'gas') {
+                    const gasSalary = emp.gasAmount  * emp.coefficient  * gasUnitValue;
+                    const unloadSalary = emp.unloadAmount  * emp.coefficient  * unloadUnitValue;
+                    emp.salary  = gasSalary + unloadSalary;
+                } else if (emp.type  === 'manager') {
                     // 站长工资按人数平均分配 
-                    emp.salary   = managerPool / managerEmployees.length; 
+                    const totalManagerCoefficient = managerEmployees.reduce((sum,  m) => sum + m.coefficient,  0);
+                    emp.salary  = totalManagerCoefficient > 0 ? managerPool * (emp.coefficient  / totalManagerCoefficient) : 0; 
                 }
                 
-                totalSalary += emp.salary;  
+                totalSalary += emp.salary;   
             });
             
             // 更新显示 
@@ -598,22 +705,22 @@
         
         // 更新工资池显示 
         function updatePoolDisplay() {
-            totalSalaryDisplay.textContent   = totalSalary.toFixed(2);  
-            remainingPoolDisplay.textContent   = remainingPool.toFixed(2);  
+            totalSalaryDisplay.textContent  = totalSalary.toFixed(2);   
+            remainingPoolDisplay.textContent  = remainingPool.toFixed(2);   
         }
         
         // 渲染员工列表 
         function renderEmployeeList() {
-            employeeList.innerHTML   = '';
+            employeeList.innerHTML  = '';
             
-            employees.forEach((emp,   index) => {
-                const row = document.createElement('tr');  
+            employees.forEach((emp,  index) => {
+                const row = document.createElement('tr');   
                 
                 // 根据违规次数设置行样式 
                 let rowClass = '';
-                if (emp.type   === 'gas') {
-                    if (emp.violations   >= 3) rowClass = 'bg-red-50';
-                    else if (emp.violations   >= 1) rowClass = 'bg-yellow-50';
+                if (emp.type  === 'gas') {
+                    if (emp.violations  >= 3) rowClass = 'bg-red-50';
+                    else if (emp.violations  >= 1) rowClass = 'bg-yellow-50';
                 }
                 
                 // 获取站点名称 
@@ -625,41 +732,42 @@
                     default: stationName = '未知';
                 }
                 
-                row.className   = rowClass;
-                row.innerHTML   = `
+                row.className  = rowClass;
+                row.innerHTML  = `
                     <td>${index + 1}</td>
-                    <td>${emp.name}</td>  
-                    <td>${emp.type   === 'gas' ? '加气员' : '站长'}</td>
+                    <td>${emp.name}</td>   
+                    <td>${emp.type  === 'gas' ? '加气员' : '站长'}</td>
                     <td>${stationName}</td> 
-                    <td>${emp.gasAmount.toFixed(2)}</td>  
-                    <td>${emp.unloadAmount.toFixed(2)}</td>  
-                    <td>${emp.violations}</td>  
-                    <td>${emp.coefficient.toFixed(2)}</td>  
-                    <td>${emp.salary.toFixed(2)}</td>  
+                    <td>${emp.gasAmount.toFixed(2)}</td>   
+                    <td>${emp.unloadAmount.toFixed(2)}</td>   
+                    <td>${emp.type  === 'gas' ? emp.violations  : '-'}</td>  
+                    <td>${emp.type  === 'manager' ? emp.rating  : '-'}</td>  
+                    <td>${emp.coefficient.toFixed(2)}</td>   
+                    <td>${emp.salary.toFixed(2)}</td>   
                     <td>
-                        <button class="btn btn-sm btn-primary edit-btn" data-id="${emp.id}">  
+                        <button class="btn btn-sm btn-primary edit-btn" data-id="${emp.id}">   
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="btn btn-sm btn-danger delete-btn" data-id="${emp.id}">  
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="${emp.id}">   
                             <i class="fas fa-trash"></i>
                         </button>
                     </td>
                 `;
                 
-                employeeList.appendChild(row);  
+                employeeList.appendChild(row);   
             });
             
             // 绑定编辑和删除按钮事件 
-            document.querySelectorAll('.edit-btn').forEach(btn   => {
-                btn.addEventListener('click',   function() {
-                    const id = parseInt(this.getAttribute('data-id'));  
+            document.querySelectorAll('.edit-btn').forEach(btn  => {
+                btn.addEventListener('click',  function() {
+                    const id = parseInt(this.getAttribute('data-id'));   
                     editEmployee(id);
                 });
             });
             
-            document.querySelectorAll('.delete-btn').forEach(btn   => {
-                btn.addEventListener('click',   function() {
-                    const id = parseInt(this.getAttribute('data-id'));  
+            document.querySelectorAll('.delete-btn').forEach(btn  => {
+                btn.addEventListener('click',  function() {
+                    const id = parseInt(this.getAttribute('data-id'));   
                     deleteEmployee(id);
                 });
             });
@@ -667,25 +775,34 @@
         
         // 编辑员工 
         function editEmployee(id) {
-            const emp = employees.find(e   => e.id   === id);
+            const emp = employees.find(e  => e.id  === id);
             if (!emp) return;
             
-            employeeName.value   = emp.name;  
-            employeeType.value   = emp.type;  
-            employeeStation.value   = emp.station;  
-            employeeGasAmount.value   = emp.gasAmount;  
-            employeeUnloadAmount.value   = emp.unloadAmount;  
-            employeeViolations.value   = emp.violations;  
+            employeeName.value  = emp.name;   
+            employeeType.value  = emp.type;   
+            employeeStation.value  = emp.station;   
+            employeeGasAmount.value  = emp.gasAmount;   
+            employeeUnloadAmount.value  = emp.unloadAmount;   
+            
+            if (emp.type  === 'gas') {
+                employeeViolations.value  = emp.violations; 
+                employeeRating.value  = '100';
+            } else {
+                employeeRating.value  = emp.rating; 
+                employeeViolations.value  = '0';
+            }
+            
+            toggleViolationField();
             
             // 删除原员工 
-            employees = employees.filter(e   => e.id   !== id);
+            employees = employees.filter(e  => e.id  !== id);
             
             showSuccess('员工信息已加载到表单，请修改后重新添加');
         }
         
         // 删除员工 
         function deleteEmployee(id) {
-            employees = employees.filter(e   => e.id   !== id);
+            employees = employees.filter(e  => e.id  !== id);
             renderEmployeeList();
             updateStats();
             showSuccess('员工已删除');
@@ -694,43 +811,44 @@
         // 下载工资表 
         function downloadResults() {
             try {
-                if (employees.length   === 0) {
+                if (employees.length  === 0) {
                     showError('没有可导出的员工数据');
                     return;
                 }
                 
                 // 准备数据 
                 const data = [
-                    ['序号', '姓名', '类型', '站点', '加气量(公斤)', '卸车量(车)', '违规次数', '考核系数', '工资(元)'],
-                    ...employees.map((emp,   index) => [
+                    ['序号', '姓名', '类型', '站点', '加气量(公斤)', '卸车量(车)', '违规次数', '考核评分', '考核系数', '工资(元)'],
+                    ...employees.map((emp,  index) => [
                         index + 1,
-                        emp.name,  
-                        emp.type   === 'gas' ? '加气员' : '站长',
+                        emp.name,   
+                        emp.type  === 'gas' ? '加气员' : '站长',
                         emp.station  === 1 ? '达来呼布' : (emp.station  === 2 ? '乌力吉' : '纳林湖'), 
-                        emp.gasAmount.toFixed(2),  
-                        emp.unloadAmount.toFixed(2),  
-                        emp.violations,  
-                        emp.coefficient.toFixed(2),  
-                        emp.salary.toFixed(2)  
+                        emp.gasAmount.toFixed(2),   
+                        emp.unloadAmount.toFixed(2),   
+                        emp.violations,   
+                        emp.rating, 
+                        emp.coefficient.toFixed(2),   
+                        emp.salary.toFixed(2)   
                     ]),
                     [],
-                    ['总发放工资:', '', '', '', '', '', '', totalSalary.toFixed(2)],  
-                    ['工资池余额:', '', '', '', '', '', '', remainingPool.toFixed(2)]  
+                    ['总发放工资:', '', '', '', '', '', '', '', totalSalary.toFixed(2)],   
+                    ['工资池余额:', '', '', '', '', '', '', '', remainingPool.toFixed(2)]   
                 ];
                 
                 // 创建工作簿 
-                const wb = XLSX.utils.book_new();  
-                const ws = XLSX.utils.aoa_to_sheet(data);  
-                XLSX.utils.book_append_sheet(wb,   ws, '工资表');
+                const wb = XLSX.utils.book_new();   
+                const ws = XLSX.utils.aoa_to_sheet(data);   
+                XLSX.utils.book_append_sheet(wb,  ws, '工资表');
                 
                 // 生成Excel文件并下载 
                 const fileName = `加气站工资表_${new Date().toISOString().slice(0, 10)}.xlsx`;
-                XLSX.writeFile(wb,   fileName);
+                XLSX.writeFile(wb,  fileName);
                 
                 showSuccess('工资表下载成功');
             } catch (error) {
-                console.error('  下载工资表出错:', error);
-                showError('下载工资表时出错: ' + error.message);  
+                console.error(' 下载工资表出错:', error);
+                showError('下载工资表时出错: ' + error.message);   
             }
         }
         
@@ -739,52 +857,52 @@
             try {
                 // 模板数据 
                 const data = [
-                    ['姓名', '类型(加气员/站长)', '站点(达来呼布/乌力吉/纳林湖)', '加气量(公斤)', '卸车量(车)', '违规次数(0-4)'],
-                    ['张三', '加气员', '达来呼布', '5000', '10', '0'],
-                    ['李四', '站长', '乌力吉', '0', '0', '0'],
-                    ['说明:', '', '', '', '', ''],
-                    ['1. 类型只能填写"加气员"或"站长"', '', '', '', '', ''],
-                    ['2. 站点只能填写"达来呼布"、"乌力吉"或"纳林湖"', '', '', '', '', ''],
-                    ['3. 违规次数只能填写0-4的整数', '', '', '', '', ''],
-                    ['4. 站长不需要填写加气量、卸车量和违规次数', '', '', '', '', '']
+                    ['姓名', '类型(加气员/站长)', '站点(达来呼布/乌力吉/纳林湖)', '加气量(公斤)', '卸车量(车)', '违规次数(0-4)', '考核评分'],
+                    ['张三', '加气员', '达来呼布', '5000', '10', '0', ''],
+                    ['李四', '站长', '乌力吉', '0', '0', '', '100'],
+                    ['说明:', '', '', '', '', '', ''],
+                    ['1. 类型只能填写"加气员"或"站长"', '', '', '', '', '', ''],
+                    ['2. 站点只能填写"达来呼布"、"乌力吉"或"纳林湖"', '', '', '', '', '', ''],
+                    ['3. 加气员填写违规次数,只能填写0-4的整数,若无违规需填写0', '', '', '', '', '', ''],
+                    ['4. 站长不需要填写加气量、卸车量,需填写考核评分', '', '', '', '', '', '']
                 ];
                 
                 // 创建工作簿 
-                const wb = XLSX.utils.book_new();  
-                const ws = XLSX.utils.aoa_to_sheet(data);  
-                XLSX.utils.book_append_sheet(wb,   ws, '导入模板');
+                const wb = XLSX.utils.book_new();   
+                const ws = XLSX.utils.aoa_to_sheet(data);   
+                XLSX.utils.book_append_sheet(wb,  ws, '导入模板');
                 
                 // 生成Excel文件并下载 
-                XLSX.writeFile(wb,   '加气站工资数据导入模板.xlsx');
+                XLSX.writeFile(wb,  '加气站工资数据导入模板.xlsx');
                 
                 showSuccess('模板下载成功');
             } catch (error) {
-                console.error('  下载模板出错:', error);
-                showError('下载模板时出错: ' + error.message);  
+                console.error(' 下载模板出错:', error);
+                showError('下载模板时出错: ' + error.message);   
             }
         }
         
         // 导入数据 
         function importData(event) {
-            const file = event.target.files[0];  
+            const file = event.target.files[0];    
             if (!file) return;
             
             const reader = new FileReader();
-            reader.onload   = function(e) {
+            reader.onload  = function(e) {
                 try {
-                    const data = new Uint8Array(e.target.result);  
-                    const workbook = XLSX.read(data,   { type: 'array' });
+                    const data = new Uint8Array(e.target.result);    
+                    const workbook = XLSX.read(data,  { type: 'array' });
                     const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-                    const jsonData = XLSX.utils.sheet_to_json(firstSheet,   { header: 1 });
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet,  { header: 1 });
                     
                     // 跳过标题行和说明行 
-                    const rows = jsonData.slice(1).filter(row   => row.length   >= 3 && row[0] && row[1] && row[2]);
+                    const rows = jsonData.slice(1).filter(row  => row.length  >= 3 && row[0] && row[1] && row[2]);
                     
                     // 清空现有员工 
                     employees = [];
                     
                     // 解析每行数据 
-                    rows.forEach(row   => {
+                    rows.forEach(row  => {
                         const name = String(row[0]).trim();
                         const type = String(row[1]).trim() === '站长' ? 'manager' : 'gas';
                         let station = 1;
@@ -797,59 +915,59 @@
                         
                         const gasAmount = type === 'gas' ? parseFloat(row[3]) || 0 : 0;
                         const unloadAmount = type === 'gas' ? parseFloat(row[4]) || 0 : 0;
-                        const violations = type === 'gas' ? parseInt(row[5]) || 0 : 0;
+                        const violations = type === 'gas' ? (parseInt(row[5]) || 0) : 0;
+                        const rating = type === 'manager' ? (parseInt(row[6]) || 100) : 100;
                         
-                        if (name && (station === 1 || station === 2 || station === 3)) {
-                            employees.push({  
-                                id: Date.now()   + Math.floor(Math.random()   * 1000),
-                                name,
-                                type,
-                                station,
-                                gasAmount,
-                                unloadAmount,
-                                violations,
-                                coefficient: calculateCoefficient(violations),
-                                salary: 0 
-                            });
-                        }
+                        employees.push({    
+                            id: Date.now()  + Math.floor(Math.random()  * 1000),
+                            name,
+                            type,
+                            station,
+                            gasAmount,
+                            unloadAmount,
+                            violations,
+                            rating,
+                            coefficient: type === 'gas' ? calculateCoefficient(violations) : rating / 100,
+                            salary: 0 
+                        });
                     });
                     
                     // 重新渲染列表 
                     renderEmployeeList();
                     updateStats();
-                    showSuccess(`成功导入 ${employees.length}   条员工数据`);
+                    showSuccess(`成功导入 ${employees.length}  条员工数据`);
                     
                     // 重置文件输入 
-                    fileInput.value   = '';
+                    fileInput.value  = '';
                 } catch (error) {
-                    console.error('  导入数据出错:', error);
-                    showError('导入数据时出错: ' + error.message);  
+                    console.error(' 导入数据出错:', error);
+                    showError('导入数据时出错: ' + error.message);    
                 }
             };
-            reader.readAsArrayBuffer(file);  
+            reader.readAsArrayBuffer(file);    
         }
         
         // 显示成功消息 
         function showSuccess(message) {
-            successMessage.textContent   = message;
-            successAlert.classList.remove('hidden');  
-            errorAlert.classList.add('hidden');  
+            successMessage.textContent  = message;
+            successAlert.classList.remove('hidden');   
+            errorAlert.classList.add('hidden');   
             
             // 3秒后自动隐藏 
             setTimeout(() => {
-                successAlert.classList.add('hidden');  
+                successAlert.classList.add('hidden');   
             }, 3000);
         }
         
         // 显示错误消息 
         function showError(message) {
-            errorMessage.textContent   = message;
-            errorAlert.classList.remove('hidden');  
-            successAlert.classList.add('hidden');  
+            errorMessage.textContent  = message;
+            errorAlert.classList.remove('hidden');   
+            successAlert.classList.add('hidden');   
             
             // 5秒后自动隐藏 
             setTimeout(() => {
-                errorAlert.classList.add('hidden');  
+                errorAlert.classList.add('hidden');   
             }, 5000);
         }
     </script>
